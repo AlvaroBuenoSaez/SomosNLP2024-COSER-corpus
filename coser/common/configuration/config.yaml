@@ -1,0 +1,6 @@
+log_path: log/
+
+
+
+locations:
+  dataset_hf: "cladsu/COSER-2024"

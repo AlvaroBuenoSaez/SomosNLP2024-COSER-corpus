@@ -1,6 +1,13 @@
-# template-code
 
-#Set-up
+# SomosNLP2004-COSER-corpus
+ COSER project to Somos NLP 2024 Hackaton. This project include tools, pipes and services to parser the COSER corpus into a instruction corpus. 
+
+# Corpus
+In HuggingFace:
+https://huggingface.co/datasets/cladsu/COSER-2024
+
+
+# Set-up template
 
 ## Conda
 Use conda to install python11:

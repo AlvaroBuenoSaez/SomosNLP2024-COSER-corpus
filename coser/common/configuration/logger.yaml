@@ -2,6 +2,6 @@ test:
   level: DEBUG
   rotation: 1MB
 
-example:
+locations:
   level: DEBUG
   rotation: 1MB
