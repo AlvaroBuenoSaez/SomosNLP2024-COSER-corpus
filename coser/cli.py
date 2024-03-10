@@ -10,10 +10,10 @@ def main (ctx):
 
 # Use: python3 coser/cli.py parser-location
 @main.command()
-# @click.option("--name",default="default",help="name string")
-def parser_location():
+@click.option("--out_folder",default="out_locations",help="folder to save the result")
+def parser_location(out_folder):
     controller=LocationController()
-    controller.parse_original_coser()
+    controller.parse_original_coser(out_folder)
 
 
 if __name__=="__main__":
