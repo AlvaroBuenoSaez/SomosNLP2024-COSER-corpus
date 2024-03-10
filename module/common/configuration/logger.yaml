@@ -1,0 +1,7 @@
+test:
+  level: DEBUG
+  rotation: 1MB
+
+example:
+  level: DEBUG
+  rotation: 1MB

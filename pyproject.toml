@@ -1,0 +1,29 @@
+[project]
+name = "pdm-plugin"
+version = "0.0.0"
+description = "A PDM plugin project"
+authors = [{"name" = "Álvaro Bueno", email = "alvarobuenosaez@gmail.com"}]
+
+dependencies = [
+    "loguru>=0.7.2",
+    "PyYAML>=6.0.1",
+    "pandas>=2.2.1",
+    "click>=8.1.7",
+]
+
+
+
+requires-python = ">=3.11"
+readme = "README.md"
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 8.1.0"
+]
+
+[tool.pytest.ini_options]
+addopts = "-s"
+
+[tool.pytest]
+log_cli = true
+log_level = "DEBUG"

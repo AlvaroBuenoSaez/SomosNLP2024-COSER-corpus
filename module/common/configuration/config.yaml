@@ -1,0 +1,5 @@
+log_path: log/
+
+
+example:
+  msg: Hello word
