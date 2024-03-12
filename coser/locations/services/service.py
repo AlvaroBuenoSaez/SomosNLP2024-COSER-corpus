@@ -36,4 +36,5 @@ class LocationService:
         return pd.DataFrame.from_records(out)
     
     def _process_text(self,text:str)->str:
+        #to implement
         return text
