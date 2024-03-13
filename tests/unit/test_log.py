@@ -1,6 +1,6 @@
 import pytest
 
-from module.common.configuration.config import get_logger
+from coser.common.configuration.config import get_logger
 logger=get_logger("test")
 
 def test_log():

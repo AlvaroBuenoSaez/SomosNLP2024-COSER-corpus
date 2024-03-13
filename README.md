@@ -30,7 +30,7 @@ pip install pdm
 ```
 Use pdm as package manager:
 ```
-pdm install -G test -G dev
+pdm install -G test
 ```
 If you have to install more libraries, f.e: pandas, you can do it with pdm as:
 ```
