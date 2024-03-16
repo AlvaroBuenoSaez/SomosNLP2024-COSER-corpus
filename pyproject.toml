@@ -10,6 +10,10 @@ dependencies = [
     "pandas>=2.2.1",
     "click>=8.1.7",
     "datasets>=2.18.0",
+    "transformers>=4.38.2",
+    "torch>=2.2.1",
+    "sentencepiece>=0.2.0",
+    "openai>=1.14.1",
 ]
 
 
@@ -24,6 +28,9 @@ test = [
 
 [tool.pytest.ini_options]
 addopts = "-s"
+
+[tool.setuptools]
+py-modules = []
 
 [tool.pytest]
 log_cli = true

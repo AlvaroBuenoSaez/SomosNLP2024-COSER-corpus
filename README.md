@@ -6,6 +6,11 @@
 In HuggingFace:
 https://huggingface.co/datasets/cladsu/COSER-2024
 
+Resources:
+- https://github.com/BatsResearch/bonito
+- https://github.com/somosnlp/recursos/blob/main/hackathon_2024/creacion_de_datasets_sinteticos_con_distilabel.ipynb
+
+
 
 # Set-up template
 
