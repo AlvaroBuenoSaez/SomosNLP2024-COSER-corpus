@@ -35,6 +35,27 @@ class LocationService:
 
         return pd.DataFrame.from_records(out)
     
+
+    def get_out_prompts(self,provincia):
+    
+        for prompt in self._config.get("output_prompts",[]):
+            text=""
+            try:
+                text=prompt.format(provincia)
+                yield text
+            except:
+                print(prompt)
+           
+
+    def get_in_prompts(self,interview_text):
+        for prompt in self._config.get("input_prompts",[]):
+            text=""
+            try:
+                text=prompt.format(interview_text)
+                yield text
+            except:
+                print(prompt)
+            
     def _process_text(self,text:str)->str:
         #to implement
         return text

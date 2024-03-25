@@ -9,7 +9,8 @@ from coser.common.utils import PROJECT_PATH,save_json
 from coser.common.configuration.config import load_config,get_logger
 logger=get_logger("locations")
 from datetime import datetime
-
+from tqdm import tqdm
+import pandas as pd
 
 class LocationController:
 
@@ -17,7 +18,7 @@ class LocationController:
     def __init__(self):
         self._config=load_config().get("locations",{})
         self._service=LocationService(self._config)
-        self._coser_service=CoserService(self._config)
+        self._coser_service=CoserService(load_config().get("coser_service",{}))
 
 
     def parse_original_coser(self,out_folder,length=200):
@@ -68,3 +69,32 @@ class LocationController:
             save_json(os.path.join(abs_out_folder,dt_string),raw_result)
 
         return raw_result
+    
+
+
+    def generate_location_corpus(self,turn_ini=0,turn_fin=10):
+        logger.debug("Loading data from local.")
+        df=self._coser_service.get_dataset_from_local()
+        df=self._coser_service.elegir_regionalismos(df,regionalismos=True)
+        
+        logger.debug("Processing interviews.")
+        df_out=[]
+        for filename in tqdm(df.iloc[:, 0].unique()):
+            out=[]
+            conv=self._coser_service.obtenerFragmentoEntrevista(df,filename,turn_ini,turn_fin)
+            provincia=self._coser_service.obtenerProvincia(df,filename)
+            out_prompts=self._service.get_out_prompts(provincia)
+            in_prompts=self._service.get_in_prompts(conv)
+
+            for out_prompt in out_prompts:
+                for in_prompt in in_prompts:
+                    out.append({"input":in_prompt,"output":out_prompt})
+            df_out.extend(out)
+            out_folder=os.path.join(PROJECT_PATH,self._service._config.get("out_folder"))
+            os.makedirs(out_folder,exist_ok=True)
+            pd.DataFrame.from_records(out).to_csv(os.path.join(out_folder,"{}.csv".format(filename)),index=False)
+            
+
+        return pd.DataFrame.from_records(df_out)
+    
+
