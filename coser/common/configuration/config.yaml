@@ -1,5 +1,9 @@
 log_path: log/
 
+coser-service:
+  dataset_hf: "cladsu/COSER-2024"
+  local_dataset: "data/CLEAN_df_hack_full.csv"
+
 prompt_input:
   openai_key: YOUR_OPEN_AI_KEY
   model: google/flan-t5-base
